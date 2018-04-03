@@ -1,0 +1,41 @@
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="students.entity">
+    <class name="Applicant" table="APPLICANT">
+        <id name="applicantId" column="APPLICANT_ID">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="profession" column="PROFESSION_ID" class="students.entity.Profession"/>
+        <bag name="applicantResultList" inverse="true" cascade="all-delete-orphan">
+            <key column="APPLICANT_ID"></key>
+            <one-to-many class="ApplicantResult"/>
+        </bag>
+        <property name="firstName" column="FIRST_NAME"/>
+        <property name="lastName" column="LAST_NAME"/>
+        <property name="middleName" column="MIDDLE_NAME"/>
+        <property name="entranceYear" column="ENTRANCE_YEAR"/>
+    </class>
+</hibernate-mapping>
