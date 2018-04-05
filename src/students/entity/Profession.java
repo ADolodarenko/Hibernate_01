@@ -5,6 +5,9 @@
  */
 package students.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author dolodarenko
@@ -13,6 +16,7 @@ public class Profession
 {
     private Long professionId;
     private String professionName;
+    private Set<Subject> subjectList = new HashSet<Subject>();
 
     public Long getProfessionId() {
         return professionId;
@@ -29,4 +33,12 @@ public class Profession
     public void setProfessionName(String professionName) {
         this.professionName = professionName;
     }    
+
+    public Set<Subject> getSubjectList() {
+        return subjectList;
+    }
+
+    public void setSubjectList(Set<Subject> subjectList) {
+        this.subjectList = subjectList;
+    }
 }

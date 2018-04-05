@@ -28,5 +28,8 @@
  
         <!-- Mapping files -->
         <mapping resource="students/entity/Profession.hbm.xml"/>
+        <mapping resource="students/entity/Applicant.hbm.xml"/>
+        <mapping resource="students/entity/Subject.hbm.xml"/>
+        <mapping resource="students/entity/ApplicantResult.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

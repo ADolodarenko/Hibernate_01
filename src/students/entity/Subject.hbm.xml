@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="students.entity">
+    <class name="Subject" table="SUBJECT">
+        <id name="subjectId" column="SUBJECT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="subjectName" column="SUBJECT_NAME"/>
+        <set name="professionList" table="SPECIALITY_SUBJECT">
+            <key column="SUBJECT_ID"></key>
+            <many-to-many column="PROFESSION_ID" class="students.entity.Profession"/>
+        </set>
+    </class>
+</hibernate-mapping>
