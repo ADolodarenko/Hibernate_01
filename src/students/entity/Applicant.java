@@ -6,19 +6,49 @@
 package students.entity;
 
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author dolodarenko
  */
+
+@Entity
+@Table(name="APPLICANT")
 public class Applicant
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "APPLICANT_ID")
     private Long applicantId;
+    
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "PROFESSION_ID")
     private Profession profession;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "applicant")
     private List<ApplicantResult> applicantResultList;
+    
+    @Column(name = "FIRST_NAME")
     private String firstName;
+    
+    @Column(name = "LAST_NAME")
     private String lastName;
+    
+    @Column(name = "MIDDLE_NAME")
     private String middleName;
+    
+    @Column(name = "ENTRANCE_YEAR")
     private Integer entranceYear;
 
     public Long getApplicantId() {

@@ -27,9 +27,9 @@
         <property name="show_sql">true</property>
  
         <!-- Mapping files -->
-        <mapping resource="students/entity/Profession.hbm.xml"/>
-        <mapping resource="students/entity/Applicant.hbm.xml"/>
-        <mapping resource="students/entity/Subject.hbm.xml"/>
-        <mapping resource="students/entity/ApplicantResult.hbm.xml"/>
+        <mapping class="students.entity.Profession"/>
+        <mapping class="students.entity.Applicant"/>
+        <mapping class="students.entity.Subject"/>
+        <mapping class="students.entity.ApplicantResult"/>
     </session-factory>
 </hibernate-configuration>
