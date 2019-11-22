@@ -87,7 +87,7 @@ public class StudentDAO
         session.beginTransaction();
         Profession result = (Profession) session.load(Profession.class, professionId);
         // Насильная инициализация списка. Не очень хорошая практика так делать
-        Hibernate.initialize(result.getSubjectList());
+        //Hibernate.initialize(result.getSubjectList());
         session.getTransaction().commit();
         return result;
     }
@@ -98,8 +98,8 @@ public class StudentDAO
         session.beginTransaction();
         List<Profession> result = session.createQuery("from Profession order by professionName").list();
         // Насильная инициализация списка. Не очень хорошая практика так делать
-        for (Profession a : result)
-            Hibernate.initialize(a.getSubjectList());
+        //for (Profession a : result)
+        //    Hibernate.initialize(a.getSubjectList());
         
         session.getTransaction().commit();
         

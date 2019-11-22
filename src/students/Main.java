@@ -13,11 +13,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
-import students.dao.StudentDAO;
-import students.entity.Applicant;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+//import students.dao.StudentDAO;
+//import students.entity.Applicant;
 import students.entity.Profession;
-import students.entity.Subject;
+//import students.entity.Subject;
 import students.utils.HibernateUtil;
+import students.facade.ProfessionFacade;
+import students.view.ProfessionView;
 
 /**
  *
@@ -27,6 +30,34 @@ public class Main
 {    
     public static void main(String[] args)
     {
+        FileSystemXmlApplicationContext context =
+                new FileSystemXmlApplicationContext(
+                new String[]{"src/StudentExample.xml", "src/StudentDatabase.xml"});
+ 
+        ProfessionFacade pf = (ProfessionFacade)context.getBean("professionFacade");
+        ProfessionView pv = new ProfessionView();
+        pv.setProfessionName("Java Developer");
+        Long id = pf.addProfession(pv);
+        pv.setProfessionId(id);
+        pf.updateProfession(pv);
+        pf.deleteProfession(pv);
+        pf.findProfession();
+        
+        /*
+        FileSystemXmlApplicationContext context =
+                new FileSystemXmlApplicationContext(
+                new String[]{"src/StudentExample.xml"});
+ 
+        ProfessionFacade pf = (ProfessionFacade)context.getBean("professionFacadeProxy");
+        ProfessionView pv = new ProfessionView();
+        pf.addProfession(pv);
+        pf.updateProfession(pv);
+        pf.deleteProfession(pv);
+        pf.findProfession();
+        */
+        
+        
+        /*
         StudentDAO dao = new StudentDAO();
  
         // Добавление новых предметов
@@ -112,6 +143,7 @@ public class Main
         // Но еще можно посмотреть комментарий в StudentDAO (метод findApplicant()).
             System.out.println(a.getProfession().getSubjectList().size());
         }
+        */
     }
     
     // Данный метод просто показывает, как делается запрос при работе на уровне JDBC
